@@ -59,14 +59,6 @@ public class Program
 
 		secondListOfListOfPlaces.ForEach(listOfPlaces =>
 		{
-
-			/*listOfPlaces.ForEach(p =>
-			{
-				counter++;
-				Console.WriteLine(p.Name);
-			});
-			*/
-
 			for (int i = 0; i < listOfPlaces.Count - 1; i++)
 			{
 				distance += Extensions.GetDistanceBetweenGPSPoints(listOfPlaces[i].GPSLocation.Longitude, listOfPlaces[i].GPSLocation.Latitude,
@@ -98,10 +90,6 @@ public class Program
 		var listOfListOfPlaces = getInitialPossibleSteps(places);
 		var allSteps = getAdditionalSteps(listOfListOfPlaces);
 		var routes = getRoutes(allSteps);
-
-		WriteOutEachRouteInfo(routes);
-
-		Console.WriteLine(JsonConvert.SerializeObject(routes));
 	}
 }
 
