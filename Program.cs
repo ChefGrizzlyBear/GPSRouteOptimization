@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using GPSRouteOptimization;
+using Newtonsoft.Json;
 
 public class Program
 {
 
-	private static List<Place> getInitialListOfPlaces() {
+	private static List<Place> getInitialListOfPlaces()
+	{
 		var place1 = new Place("test1", 33.94, 67.71, 2);
 		var place2 = new Place("test2", 60.18, 19.92, 2);
 		var place3 = new Place("test3", 41.15, 20.17, 2);
@@ -48,28 +50,45 @@ public class Program
 		return secondListOfListOfPlaces;
 	}
 
-	private static void writeResults(List<List<Place>> secondListOfListOfPlaces)
+	private static List<Route> getRoutes(List<List<Place>> secondListOfListOfPlaces)
 	{
 		int counter = 0;
 		double distance = 0;
+
+		List<Route> routes = new List<Route>();
+
 		secondListOfListOfPlaces.ForEach(listOfPlaces =>
 		{
-			
-			listOfPlaces.ForEach(p =>
+
+			/*listOfPlaces.ForEach(p =>
 			{
 				counter++;
 				Console.WriteLine(p.Name);
 			});
+			*/
 
-			for(int i = 0; i < listOfPlaces.Count - 1; i++)
+			for (int i = 0; i < listOfPlaces.Count - 1; i++)
 			{
-				distance+= Extensions.GetDistanceBetweenGPSPoints(listOfPlaces[i].GPSLocation.Longitude, listOfPlaces[i].GPSLocation.Latitude,
-				listOfPlaces[i+1].GPSLocation.Longitude, listOfPlaces[i+1].GPSLocation.Latitude);
+				distance += Extensions.GetDistanceBetweenGPSPoints(listOfPlaces[i].GPSLocation.Longitude, listOfPlaces[i].GPSLocation.Latitude,
+				listOfPlaces[i + 1].GPSLocation.Longitude, listOfPlaces[i + 1].GPSLocation.Latitude);
 			}
-			
-			Console.WriteLine("Total Distance: " + Convert.ToString(distance));
-			Console.WriteLine();
 
+			Route route = new Route(listOfPlaces, distance);
+			routes.Add(route);
+			distance = 0;
+		});
+		return routes;
+	}
+
+	private static void WriteOutEachRouteInfo(List<Route> routes)
+	{
+		var routesSorted = routes.OrderBy(r => r.Distance).ToList();
+		routesSorted.ForEach(r =>
+		{
+			Console.WriteLine("Starting Point: " + r.StartLocationName);
+			Console.WriteLine("Ending Point: " + r.EndLocationName);
+			Console.WriteLine("Distance: " + r.Distance);
+			Console.WriteLine();
 		});
 	}
 
@@ -78,7 +97,11 @@ public class Program
 		var places = getInitialListOfPlaces();
 		var listOfListOfPlaces = getInitialPossibleSteps(places);
 		var allSteps = getAdditionalSteps(listOfListOfPlaces);
-		writeResults(allSteps);
+		var routes = getRoutes(allSteps);
+
+		WriteOutEachRouteInfo(routes);
+
+		Console.WriteLine(JsonConvert.SerializeObject(routes));
 	}
 }
 

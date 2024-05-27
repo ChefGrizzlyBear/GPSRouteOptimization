@@ -13,3 +13,6 @@
 /workspaces/GPSRouteOptimization/obj/Debug/net8.0/GPSRouteOptimization.pdb
 /workspaces/GPSRouteOptimization/obj/Debug/net8.0/GPSRouteOptimization.genruntimeconfig.cache
 /workspaces/GPSRouteOptimization/obj/Debug/net8.0/ref/GPSRouteOptimization.dll
+/workspaces/GPSRouteOptimization/obj/Debug/net8.0/GPSRouteOptimization.csproj.AssemblyReference.cache
+/workspaces/GPSRouteOptimization/bin/Debug/net8.0/Newtonsoft.Json.dll
+/workspaces/GPSRouteOptimization/obj/Debug/net8.0/GPSRoute.062D5D45.Up2Date
