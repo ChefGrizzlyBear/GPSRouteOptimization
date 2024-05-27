@@ -27,7 +27,7 @@ public class Program
 		List<List<Place>> listOfListOfPlaces = new List<List<Place>>();
 
 		listOfListOfPlaces.Add(places);
-		for (int i = 0; i < places.Count; i++)
+		for (int i = 1; i < places.Count; i++)
 		{
 			var newPlaces = Extensions.Swap(places, 0, i);
 			listOfListOfPlaces.Add(newPlaces);
@@ -43,7 +43,11 @@ public class Program
 		{
 			for (int i = 0; i < tplaces.Count; i++)
 			{
-				secondListOfListOfPlaces.Add(Extensions.Swap(tplaces, 0, 1));
+				//secondListOfListOfPlaces.Add(Extensions.Swap(tplaces, 0, 1));
+				var first = tplaces[0];
+				tplaces.RemoveAt(0);
+				tplaces.Add(first);
+				secondListOfListOfPlaces.Add(tplaces);
 			}
 		});
 
