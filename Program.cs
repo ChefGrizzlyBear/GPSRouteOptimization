@@ -33,12 +33,8 @@ public class Program
 		return listOfListOfPlaces;
 	}
 
-
-	public static void Main()
+	private static List<List<Place>> getAdditionalSteps(List<List<Place>> listOfListOfPlaces)
 	{
-		var places = getInitialListOfPlaces();
-		var listOfListOfPlaces = getInitialPossibleSteps(places);
-
 		var secondListOfListOfPlaces = new List<List<Place>>(listOfListOfPlaces);
 
 		listOfListOfPlaces.ForEach(tplaces =>
@@ -48,6 +44,12 @@ public class Program
 				secondListOfListOfPlaces.Add(Extensions.Swap(tplaces, 0, 1));
 			}
 		});
+
+		return secondListOfListOfPlaces;
+	}
+
+	private static void writeResults(List<List<Place>> secondListOfListOfPlaces)
+	{
 		int counter = 0;
 		secondListOfListOfPlaces.ForEach(listOfPlaces =>
 		{
@@ -58,6 +60,14 @@ public class Program
 			});
 			Console.WriteLine();
 		});
+	}
+
+	public static void Main()
+	{
+		var places = getInitialListOfPlaces();
+		var listOfListOfPlaces = getInitialPossibleSteps(places);
+		var allSteps = getAdditionalSteps(listOfListOfPlaces);
+		writeResults(allSteps);
 	}
 }
 
