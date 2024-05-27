@@ -78,13 +78,11 @@ public class Program
 		return routes;
 	}
 
-	private static void writeOutEachRouteInfo(List<Route> routes)
+	private static void writeOutSortedRouteInfo(List<Route> routes)
 	{
 		var routesSorted = routes.OrderBy(r => r.Distance).ToList();
 		routesSorted.ForEach(r =>
 		{
-			//Console.WriteLine("Starting Point: " + r.StartLocationName);
-			//Console.WriteLine("Ending Point: " + r.EndLocationName);
 			Console.WriteLine("Name Path: " + r.ConcatUniqueRouteName());
 			Console.WriteLine("Distance: " + r.Distance);
 			Console.WriteLine();
@@ -97,8 +95,7 @@ public class Program
 		var listOfListOfPlaces = getInitialPossibleSteps(places);
 		var allSteps = getAdditionalSteps(listOfListOfPlaces);
 		var routes = getRoutes(allSteps);
-
-		writeOutEachRouteInfo(routes);
+		writeOutSortedRouteInfo(routes);
 	}
 }
 
