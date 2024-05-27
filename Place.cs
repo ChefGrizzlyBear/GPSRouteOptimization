@@ -10,7 +10,7 @@ namespace GPSRouteOptimization
         public GPSLocation GPSLocation { get; set; }
         public string Name { get; set; }
 
-        public Place(string name, decimal lat, decimal lon, decimal elev)
+        public Place(string name, double lat, double lon, double elev)
         {
             Name = name;
             GPSLocation = new GPSLocation(lat, lon, elev);

@@ -7,11 +7,11 @@ namespace GPSRouteOptimization
 {
     public class GPSLocation
     {
-        public decimal Latitude { get; set; }
-        public decimal Longitude { get; set; }
-        public decimal Elevation { get; set; }
+        public double Latitude { get; set; }
+        public double Longitude { get; set; }
+        public double Elevation { get; set; }
 
-        public GPSLocation(decimal lat, decimal lon, decimal elev)
+        public GPSLocation(double lat, double lon, double elev)
         {
             Latitude = lat;
             Longitude = lon;

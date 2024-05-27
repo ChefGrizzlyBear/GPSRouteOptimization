@@ -6,11 +6,11 @@ public class Program
 {
 
 	private static List<Place> getInitialListOfPlaces() {
-		var place1 = new Place("test1", 0, 1, 2);
-		var place2 = new Place("test2", 0, 1, 2);
-		var place3 = new Place("test3", 0, 1, 2);
-		var place4 = new Place("test4", 0, 1, 2);
-		var place5 = new Place("test5", 0, 1, 2);
+		var place1 = new Place("test1", 33.94, 67.71, 2);
+		var place2 = new Place("test2", 60.18, 19.92, 2);
+		var place3 = new Place("test3", 41.15, 20.17, 2);
+		var place4 = new Place("test4", 28.03, 1.66, 2);
+		var place5 = new Place("test5", -14.27, -170.3, 2);
 		var places = new List<Place>();
 		places.Add(place1);
 		places.Add(place2);
@@ -51,14 +51,25 @@ public class Program
 	private static void writeResults(List<List<Place>> secondListOfListOfPlaces)
 	{
 		int counter = 0;
+		double distance = 0;
 		secondListOfListOfPlaces.ForEach(listOfPlaces =>
 		{
+			
 			listOfPlaces.ForEach(p =>
 			{
 				counter++;
-				Console.WriteLine(counter.ToString() + " " + p.Name);
+				Console.WriteLine(p.Name);
 			});
+
+			for(int i = 0; i < listOfPlaces.Count - 1; i++)
+			{
+				distance+= Extensions.GetDistanceBetweenGPSPoints(listOfPlaces[i].GPSLocation.Longitude, listOfPlaces[i].GPSLocation.Latitude,
+				listOfPlaces[i+1].GPSLocation.Longitude, listOfPlaces[i+1].GPSLocation.Latitude);
+			}
+			
+			Console.WriteLine("Total Distance: " + Convert.ToString(distance));
 			Console.WriteLine();
+
 		});
 	}
 
