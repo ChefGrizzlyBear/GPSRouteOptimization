@@ -27,7 +27,7 @@ public class Program
 		List<List<Place>> listOfListOfPlaces = new List<List<Place>>();
 
 		listOfListOfPlaces.Add(places);
-		for (int i = 1; i < places.Count; i++)
+		for (int i = 0; i < places.Count; i++)
 		{
 			var newPlaces = Extensions.Swap(places, 0, i);
 			listOfListOfPlaces.Add(newPlaces);
@@ -41,7 +41,7 @@ public class Program
 
 		listOfListOfPlaces.ForEach(tplaces =>
 		{
-			for (int i = 1; i < tplaces.Count; i++)
+			for (int i = 0; i < tplaces.Count; i++)
 			{
 				secondListOfListOfPlaces.Add(Extensions.Swap(tplaces, 0, 1));
 			}
@@ -52,7 +52,6 @@ public class Program
 
 	private static List<Route> getRoutes(List<List<Place>> secondListOfListOfPlaces)
 	{
-		int counter = 0;
 		double distance = 0;
 
 		List<Route> routes = new List<Route>();
@@ -72,7 +71,7 @@ public class Program
 		return routes;
 	}
 
-	private static void WriteOutEachRouteInfo(List<Route> routes)
+	private static void writeOutEachRouteInfo(List<Route> routes)
 	{
 		var routesSorted = routes.OrderBy(r => r.Distance).ToList();
 		routesSorted.ForEach(r =>
@@ -90,6 +89,8 @@ public class Program
 		var listOfListOfPlaces = getInitialPossibleSteps(places);
 		var allSteps = getAdditionalSteps(listOfListOfPlaces);
 		var routes = getRoutes(allSteps);
+
+		writeOutEachRouteInfo(routes);
 	}
 }
 
