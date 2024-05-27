@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GPSRouteOptimization")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+23b90402be1f2036b95f1195927b3beac02815c4")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+427b2c9853b0cd695bf38b602f32628287093228")]
 [assembly: System.Reflection.AssemblyProductAttribute("GPSRouteOptimization")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GPSRouteOptimization")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

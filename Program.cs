@@ -27,10 +27,13 @@ public class Program
 		List<List<Place>> listOfListOfPlaces = new List<List<Place>>();
 
 		listOfListOfPlaces.Add(places);
-		for (int i = 1; i < places.Count; i++)
+		for (int j = 0; j < places.Count; j++)
 		{
-			var newPlaces = Extensions.Swap(places, 0, i);
-			listOfListOfPlaces.Add(newPlaces);
+			for (int i = 0; i < places.Count; i++)
+			{
+				var newPlaces = Extensions.Swap(places, i, j);
+				listOfListOfPlaces.Add(newPlaces);
+			}
 		}
 		return listOfListOfPlaces;
 	}
