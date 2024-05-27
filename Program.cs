@@ -83,8 +83,9 @@ public class Program
 		var routesSorted = routes.OrderBy(r => r.Distance).ToList();
 		routesSorted.ForEach(r =>
 		{
-			Console.WriteLine("Starting Point: " + r.StartLocationName);
-			Console.WriteLine("Ending Point: " + r.EndLocationName);
+			//Console.WriteLine("Starting Point: " + r.StartLocationName);
+			//Console.WriteLine("Ending Point: " + r.EndLocationName);
+			Console.WriteLine("Name Path: " + r.ConcatUniqueRouteName());
 			Console.WriteLine("Distance: " + r.Distance);
 			Console.WriteLine();
 		});

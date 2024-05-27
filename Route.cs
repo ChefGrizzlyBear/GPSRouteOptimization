@@ -22,5 +22,14 @@ namespace GPSRouteOptimization
             StartLocationName = places[0].Name;
             EndLocationName = places[places.Count - 1].Name;
         }
+
+        public string ConcatUniqueRouteName(){
+            string returnString = "";
+            foreach(Place p in Places){
+                returnString += " " + p.Name;
+            }
+
+            return returnString;
+        }
     }
 }
