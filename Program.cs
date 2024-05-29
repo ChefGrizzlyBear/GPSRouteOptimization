@@ -95,7 +95,10 @@ public class Program
 		var listOfListOfPlaces = getInitialPossibleSteps(places);
 		var allSteps = getAdditionalSteps(listOfListOfPlaces);
 		var routes = getRoutes(allSteps);
-		writeOutSortedRouteInfo(routes);
+				Console.WriteLine(routes.Count());
+
+		Console.WriteLine(routes.Distinct().Count());
+		//writeOutSortedRouteInfo(routes);
 	}
 }
 
